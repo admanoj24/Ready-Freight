@@ -631,7 +631,7 @@ export default function Home() {
                   Sustainability in Transportation: Our Commitment
                 </h3>
                 <p className="mb-4 text-gray-500">
-                  Learn about Ready-Freight's initiatives to reduce carbon
+                  Learn about Ready-Freight initiatives to reduce carbon
                   emissions and promote sustainability.
                 </p>
                 <Link
@@ -784,7 +784,7 @@ export default function Home() {
                 Latest News
               </h2>
               <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
-                Stay updated with Ready-Freight's latest news and announcements.
+                Stay updated with Ready-Freight latest news and announcements.
               </p>
             </div>
           </div>
