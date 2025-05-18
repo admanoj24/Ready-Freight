@@ -65,7 +65,7 @@
 //           <div className="flex items-center gap-4">
 //             <Link href="/" className="flex items-center gap-2">
 //               <Image
-//                 src="/2.png?height=40&width=180"
+//                 src="/9.png?height=40&width=180"
 //                 alt="Ready-Freight Logo"
 //                 width={280}
 //                 height={50}
@@ -1219,11 +1219,11 @@
 //             <div>
 //               <Link href="/" className="mb-4 inline-block">
 //                 <Image
-//                   src="/2.png?height=40&width=180"
+//                   src="/9.png?height=40&width=180"
 //                   alt="Ready-Freight Logo"
 //                   width={220}
 //                   height={50}
-//                   className="h-12 w-auto"
+//                   className="h-16 w-auto"
 //                 />
 //               </Link>
 //               <p className="mt-4 text-sm text-gray-400">
@@ -1492,6 +1492,20 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [expandedSections, setExpandedSections] = useState({
+    shippers: false,
+    solutions: false,
+    industries: false,
+    resources: false,
+    about: false,
+  });
+
+  const toggleSection = (section) => {
+    setExpandedSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -1540,7 +1554,7 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/2.png?height=40&width=180"
+                src="/9.png?height=40&width=180"
                 alt="Ready-Freight Logo"
                 width={280}
                 height={50}
@@ -1780,7 +1794,7 @@ export default function Home() {
             <div className="sticky top-0 z-10 flex items-center justify-between px-4 py-4 bg-white border-b border-gray-200">
               <Link href="/" className="flex items-center gap-2">
                 <Image
-                  src="/2.png?height=40&width=180"
+                  src="/9.png?height=40&width=180"
                   alt="Ready-Freight Logo"
                   width={280}
                   height={50}
@@ -1821,212 +1835,282 @@ export default function Home() {
               <nav className="px-2 py-2">
                 {/* Shippers */}
                 <div className="mb-1 rounded-lg overflow-hidden">
-                  <div className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-gray-50">
+                  <div
+                    className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-gray-50"
+                    onClick={() => toggleSection("shippers")}
+                  >
                     <h3 className="font-medium text-gray-900">Shippers</h3>
-                    <ChevronDown className="h-4 w-4 text-gray-500" />
+                    <ChevronDown
+                      className={`h-4 w-4 text-gray-500 transition-transform ${
+                        expandedSections.shippers ? "rotate-180" : ""
+                      }`}
+                    />
                   </div>
-                  <div className="bg-gray-50 px-4 py-2">
-                    <div className="space-y-1">
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Get a Quote
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Track a Shipment
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Shipping Services
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Supply Chain Solutions
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Shipper Resources
-                      </Link>
+                  {expandedSections.shippers && (
+                    <div className="bg-gray-50 px-4 py-2">
+                      <div className="space-y-1">
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Get a Quote
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Track a Shipment
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Shipping Services
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Supply Chain Solutions
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Shipper Resources
+                        </Link>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Solutions */}
                 <div className="mb-1 rounded-lg overflow-hidden">
-                  <div className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-gray-50">
+                  <div
+                    className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-gray-50"
+                    onClick={() => toggleSection("solutions")}
+                  >
                     <h3 className="font-medium text-gray-900">Solutions</h3>
-                    <ChevronDown className="h-4 w-4 text-gray-500" />
+                    <ChevronDown
+                      className={`h-4 w-4 text-gray-500 transition-transform ${
+                        expandedSections.solutions ? "rotate-180" : ""
+                      }`}
+                    />
                   </div>
-                  <div className="bg-gray-50 px-4 py-2">
-                    <div className="space-y-1">
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Supply Chain Solutions
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Dedicated Contract Services
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Final Mile Services
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Intermodal
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Truckload
-                      </Link>
+                  {expandedSections.solutions && (
+                    <div className="bg-gray-50 px-4 py-2">
+                      <div className="space-y-1">
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Supply Chain Solutions
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Dedicated Contract Services
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Final Mile Services
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Intermodal
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Truckload
+                        </Link>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Industries */}
                 <div className="mb-1 rounded-lg overflow-hidden">
-                  <div className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-gray-50">
+                  <div
+                    className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-gray-50"
+                    onClick={() => toggleSection("industries")}
+                  >
                     <h3 className="font-medium text-gray-900">Industries</h3>
-                    <ChevronDown className="h-4 w-4 text-gray-500" />
+                    <ChevronDown
+                      className={`h-4 w-4 text-gray-500 transition-transform ${
+                        expandedSections.industries ? "rotate-180" : ""
+                      }`}
+                    />
                   </div>
-                  <div className="bg-gray-50 px-4 py-2">
-                    <div className="space-y-1">
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Retail
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Food & Beverage
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Manufacturing
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Healthcare
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Automotive
-                      </Link>
+                  {expandedSections.industries && (
+                    <div className="bg-gray-50 px-4 py-2">
+                      <div className="space-y-1">
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Retail
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Food & Beverage
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Manufacturing
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Healthcare
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Automotive
+                        </Link>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Resources */}
                 <div className="mb-1 rounded-lg overflow-hidden">
-                  <div className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-gray-50">
+                  <div
+                    className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-gray-50"
+                    onClick={() => toggleSection("resources")}
+                  >
                     <h3 className="font-medium text-gray-900">Resources</h3>
-                    <ChevronDown className="h-4 w-4 text-gray-500" />
+                    <ChevronDown
+                      className={`h-4 w-4 text-gray-500 transition-transform ${
+                        expandedSections.resources ? "rotate-180" : ""
+                      }`}
+                    />
                   </div>
-                  <div className="bg-gray-50 px-4 py-2">
-                    <div className="space-y-1">
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Shipper Resources
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Carrier Resources
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Driver Resources
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Case Studies
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Blog
-                      </Link>
+                  {expandedSections.resources && (
+                    <div className="bg-gray-50 px-4 py-2">
+                      <div className="space-y-1">
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Shipper Resources
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Carrier Resources
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Driver Resources
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Case Studies
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Blog
+                        </Link>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* About */}
                 <div className="mb-1 rounded-lg overflow-hidden">
-                  <div className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-gray-50">
+                  <div
+                    className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-gray-50"
+                    onClick={() => toggleSection("about")}
+                  >
                     <h3 className="font-medium text-gray-900">About</h3>
-                    <ChevronDown className="h-4 w-4 text-gray-500" />
+                    <ChevronDown
+                      className={`h-4 w-4 text-gray-500 transition-transform ${
+                        expandedSections.about ? "rotate-180" : ""
+                      }`}
+                    />
                   </div>
-                  <div className="bg-gray-50 px-4 py-2">
-                    <div className="space-y-1">
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Company Overview
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Leadership
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Sustainability
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        Diversity & Inclusion
-                      </Link>
-                      <Link
-                        href="#"
-                        className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
-                      >
-                        News
-                      </Link>
+                  {expandedSections.about && (
+                    <div className="bg-gray-50 px-4 py-2">
+                      <div className="space-y-1">
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Company Overview
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Leadership
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Sustainability
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Diversity & Inclusion
+                        </Link>
+                        <Link
+                          href="#"
+                          className="block px-2 py-2 text-sm text-gray-600 hover:text-blue-600 rounded hover:bg-gray-100"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          News
+                        </Link>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </nav>
             </div>
@@ -2037,24 +2121,28 @@ export default function Home() {
                 <Link
                   href="#"
                   className="flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 rounded-md border border-gray-200 hover:border-blue-200 hover:bg-blue-50"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Careers
                 </Link>
                 <Link
                   href="#"
                   className="flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 rounded-md border border-gray-200 hover:border-blue-200 hover:bg-blue-50"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Investors
                 </Link>
                 <Link
                   href="#"
                   className="flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 rounded-md border border-gray-200 hover:border-blue-200 hover:bg-blue-50"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact Us
                 </Link>
                 <Link
                   href="#"
                   className="flex items-center justify-center px-3 py-2 text-sm font-medium text-blue-600 hover:text-blue-800 rounded-md border border-blue-200 bg-blue-50 hover:bg-blue-100"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Log In
                 </Link>
@@ -2694,7 +2782,7 @@ export default function Home() {
             <div>
               <Link href="/" className="mb-4 inline-block">
                 <Image
-                  src="/2.png?height=40&width=180"
+                  src="/9.png?height=40&width=180"
                   alt="Ready-Freight Logo"
                   width={220}
                   height={50}
